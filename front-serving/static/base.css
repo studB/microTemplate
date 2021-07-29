@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position:relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.register-frame {
+    width: 300px;
+    min-width: 300px;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-container {
+    width: inherit;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-img-box {
+    position: relative;
+}
+.register-img-box .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
+.blank {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    box-shadow: inset 0px 1px 2px 1px rgba(119, 73, 54, 0.3);
+}
+.blank > div {
+    position: absolute;
+    top: 100px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: black;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.blank > div:nth-child(1){
+    left: 44px;
+    animation: trans1 1s infinite;
+    background-color: rgba(237, 196, 179, 0.2);
+    box-shadow: 0px 0px 1px 1px rgba(237, 196, 179, 0.8);
+}
+.blank > div:nth-child(2){
+    left: 44px;
+    animation: trans2 1s infinite;
+    background-color: rgba(237, 196, 179, 0.2);
+    box-shadow: 0px 0px 1px 1px rgba(237, 196, 179, 0.8);
+}
+.blank > div:nth-child(3){
+    left: 92px;
+    animation: trans2 1s infinite;
+    background-color: rgba(222, 171, 144, 0.3);
+    box-shadow: 0px 0px 1px 1px rgba(222, 171, 144, 0.8);
+}
+.blank > div:nth-child(4){
+    left: 140px;
+    animation: trans3 1s infinite;
+    background-color: rgba(222, 171, 144, 0.3);
+    box-shadow: inset 0px 0px 1px 1px rgba(222, 171, 144, 0.8);
+}
+@keyframes trans1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes trans3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes trans2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(48px, 0);
+    }
+}
+.register-input-box {
+    width: 80%;
+}
+.register-input-box >label {
+    position: relative;
+}
+
+.register-input-box > label::before {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px 1px rgba(32, 33, 38, 0.8);
+    cursor: pointer;
+}
+.register-input-box > label::after {
+    position: absolute;
+    top: -40px;
+    left: 18px;
+    content: '+';
+    color: #666;
+    font-size: larger;
+    font-family: 'Gill Sans';
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.register-input-box > input[type="file"] {
+    display: none;
+}
+.register-container > input[type=text] {
+    padding: 0px 10px;
+    width: 80%;
+    height: 33px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 2px 1px rgba(43, 26, 19, 0.3);
+    color: #666;
+    font-weight: 600;
+}
+
+.border-frame {
+    width: 70px;
+    height: inherit;
+    display: flex;
+    align-items: center;
+}
+.register-button-box {
+    position: relative;
+    width: 70px;
+    line-height: 40px;
+    border: 1px solid rgba(102, 102, 102, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px rgba(102, 102, 102, 0.2);
+    cursor: pointer;
+}
+.register-button-box .barrier {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 80px;
+    height: 50px;
+    visibility: visible;
+}
+
+.register-button-box .register-word {
+    padding: 0 7px;
+    color: #666;
+    font-size: 18px;
+    font-weight: bolder;
+}
+.register-button-box:hover .arrow {
+    animation: none;
+}
+.register-button-box .arrow {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    animation: pointer 1s ease-in-out infinite;
+}
+@keyframes pointer {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(10px, 0);
+    }
+}
+
+.register-button-box .arrow > div {
+    position: relative;
+    width: 0px;
+    height: 0px;
+    border: 8px solid;
+    border-color: rgba(32, 33, 38, 1) rgba(32, 33, 38, 1) transparent transparent;
+    transform: rotate(45deg);
+}
+.register-button-box .arrow > div::before, .arrow > div::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid;
+}
+.register-button-box .arrow > div::before {
+    border-color: rgba(32, 33, 38, 1) transparent transparent rgba(32, 33, 38, 1);
+    display: block;
+    top: -1px;
+    right: 0px;
+    transform-origin: top right;
+    transform: rotate(45deg);
+}
+.register-button-box .arrow > div::after {
+    border-color: transparent rgba(32, 33, 38, 1) rgba(32, 33, 38, 1) transparent;
+    top: 0px;
+    right: -1px;
+    transform-origin: top right;
+    transform: rotate(-45deg);
+}
+
+.dict-frame {
+    padding: 30px 10px;
+    flex: 1;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+.person {
+    position: relative;
+    margin: 5px 10px;
+    width: 250px;
+    min-width: 250px;
+    height: 70px;
+    border: 1px solid #666;
+    border-radius: 35px 10px 10px 35px;
+    box-shadow: 1px 1px 3px 1px rgba(119, 73, 54, 0.3);
+    display: flex;
+    align-items: center;
+}
+
+.person .person-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: inset 0px 1px 1px 1px rgba(119, 73, 54, 0.3);
+    transform: translateX(5px);
+    background-size: cover;
+}
+
+.person .person-name {
+    position: absolute;
+    right: 10px;
+    padding: 10px 5px;
+    width: 170px;
+    flex: 1;
+    text-align: center;
+    background: #fff;
+    color: #666;
+    font-size: larger;
+    font-weight: 300;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.person-name:hover{
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+.person .person-tag {
+    position: absolute;
+    right: 10px;
+    padding: 10px 5px;
+    width: 170px;
+    flex: 1;
+    text-align: center;
+    color: #666;
+    font-size: larger;
+    font-weight: 300;
+}

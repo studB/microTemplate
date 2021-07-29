@@ -1,0 +1,30 @@
+server:
+  port: 8000
+
+service:
+  host: 0.0.0.0
+
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    gateway:
+      default-filters:
+        -
+          name: GlobalFilter
+      routes:
+        -
+          id: front
+          uri: http://${service.host}:8999/
+          predicates:
+            - Path=/front/**
+          filters:
+            - RewritePath=/front/(?<segment>.*), /$\{segment}
+        -
+          id: back
+          uri: http://${service.host}:9000/
+          predicates:
+            - Path=/back/**
+          filters:
+            - RewritePath=/back/(?<segment>.*), /$\{segment}
+

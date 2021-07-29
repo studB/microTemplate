@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person-Dict</title>
+    <base href="/front/static/"/>
+    <link rel="stylesheet" href="base.css" />
+</head>
+<body>
+    <section class="register-frame">
+        <main class="register-container">
+            <div class="register-img-box">
+                <div class="blank">
+                    <!-- https://loading.io/css/ -->
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <img src="" class="img" alt="face">
+            </div>
+            <div class="register-input-box">
+                <label for="register-img-input"></label>
+                <input onchange="imgUpload()" type="file" id="register-img-input" accept="image/*" class="register-input" />
+            </div>
+            <input type="text" placeholder="#" class="register-tag" />
+            <input type="text" placeholder="이름" class="register-name" />
+        </main>
+    </section>
+    <section class="border-frame">
+        <div class="register-button-box" onclick="doRegister()">
+            <span class="register-word">등록</span>
+            <div class="arrow">
+                <div></div>
+            </div>
+        </div>
+    </section>
+    <section class="dict-frame">
+    </section>
+    <script src="app.js"></script>
+    <script>
+        init();
+    </script>
+</body>
+</html>

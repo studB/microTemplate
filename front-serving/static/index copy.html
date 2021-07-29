@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+    <base href="/static/"/>
+    <link rel="stylesheet" href="base.css" />
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="file" id="input" accept="image/png, image/jpeg">
+        <input type="submit" id="inputs" value="go">
+        <button onclick="show()">show</button>
+        <button onclick="get()">Get</button>
+        <img id="image" src="">
+    </div>
+    <script>
+        function getBase64(file) {
+            return new Promise( (resolve, reject) => {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    resolve(reader.result);
+                }
+                reader.onerror = (err) => {
+                    reject(err);
+                }
+            })
+        }
+
+        function get() {
+            fetch("http://172.16.236.12:9000/persons", {
+                method: 'GET',
+                mode: 'cors'
+            }).then( (response) => {
+                console.log(response);
+                if (response.status >= 200 && response.status < 300) {
+                    return Promise.resolve(response)
+                } else {
+                    return Promise.reject(new Error(response.statusText))
+                }
+            })
+            .then( (response) => {
+                return response.json();
+            }).then( json => {
+                console.log(json[0].image);
+                document.getElementById("image").src = "data:image/png;base64," + json[0].image;
+            })
+        }
+        
+        async function show(){
+            const img = document.getElementById("input");
+            const file = img.files[0];
+            const base = await getBase64(file);
+            const formData = new FormData();
+            formData.append("name", "bdy");
+            formData.append("image", file);
+            formData.append("profile", "h");
+            
+            fetch("http://172.16.236.12:9000/person", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': false,
+                },
+                mode: 'no-cors',
+                body: formData
+            }).then( (res) => {
+                console.log(res);
+            })
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

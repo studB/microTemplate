@@ -1,0 +1,16 @@
+{
+  "name": "front-serving",
+  "version": "1.0.0",
+  "description": "Serve a static resource",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "studB",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
